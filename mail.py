@@ -37,17 +37,17 @@ def check():
     now = dt.datetime.now() 
     #Gets date of this current moment as 3 part object day, week, month
     date = now.isocalendar()
-    if date.weekday == 1:
+    if date.weekday == 6:
         #Open txt file with quotes and select a random one
         with open('quotes.txt') as quotes:
             quotes = quotes.readlines()
             quote = random.choice(quotes)
             subject = 'Monday Motivation!'
     #Trigger email function
-    email(sender, subject, quote)
+    email(emails[0], subject, quote)
     
 '''Schedule for the check function'''
-schedule.every().day.at("09:00").do(check)
+schedule.every().day.at("09:00:00").do(check)
 
 '''Sets program to indefinitely run - this isn't completely ideal but it works'''
 while True:
